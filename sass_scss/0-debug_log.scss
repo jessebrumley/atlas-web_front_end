@@ -1,0 +1,5 @@
+$debug: true;
+
+@if $debug {
+  @debug 'Hello world';
+}
