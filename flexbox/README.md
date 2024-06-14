@@ -1,8 +1,7 @@
-# Project: Mastering Sass and SCSS
+# Project: Mastering Flexbox
 
 ## Introduction
-
-This project is designed to provide a comprehensive understanding of Sass (Syntactically Awesome Stylesheets), a powerful CSS preprocessor that extends the capabilities of CSS. By the end of this project, you will be proficient in writing Sass and SCSS files, understand the differences between them, and be able to utilize various features such as variables, nesting, mixins, inheritance, and loops.
+Flexbox, or Flexible Box Layout, revolutionizes CSS design by simplifying the creation of flexible and responsive layouts. This guide aims to equip you with the essential skills to effectively use Flexbox in your projects. By the end, you'll confidently create layouts that adapt seamlessly to various screen sizes and devices, mastering alignment, spacing, and the dynamic arrangement of elements within containers.
 
 ### Learning Objectives
 
