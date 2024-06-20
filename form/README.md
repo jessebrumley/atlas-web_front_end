@@ -29,7 +29,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 
 ## Usage
 Clone the repository to your local machine.
-***git clone <https://github.com/jessebrumley/atlas-web_front_end/tree/main/form>***
+[Form](https://github.com/jessebrumley/atlas-web_front_end/tree/main/form)
 
 ## Resources
 - [MDN Web Docs - HTML forms](https://developer.mozilla.org/en-US/docs/Learn/Forms)
