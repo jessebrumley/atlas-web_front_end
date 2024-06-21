@@ -5,7 +5,7 @@
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 - How to create an HTML5 form
 - Understand the basic structure of an HTML form using <form> tag.
-- Utilize <input>, <textarea>, and <button> elements effectively within forms.
+- Utilize **input**, **textarea**, and **button** elements effectively within forms.
 - How to choose the right input type
 - Determine appropriate input types (text, email, password, number, etc.) based on the data being collected.
 - How to constrain a form field with regular expressions
