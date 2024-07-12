@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <title>Wikipedia Search</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <script type="application/javascript">
+        function createSearchForm() {
+            $('body').append('<form id="searchForm">' +
+                                '<input type="text" name="search" placeholder="Search Wikipedia">' +
+                                '<input type="submit" value="Search">' +
+                               '</form>');
+            $('body').append('<ul id="resultsList"></ul>');
+        }
+
+        function addNewArticle(pageid, title, snippet) {
+          var listItem = $('<li>');
+          listItem.html(pageid + ' - <strong>' + title + '</strong>');
+          listItem.append($('<p>').html(snippet));
+          $('#resultsList').append(listItem);
+      }
+      
+
+        function queryWikipedia(search) {
+            $.ajax({
+                url: 'https://en.wikipedia.org/w/api.php',
+                dataType: 'jsonp',
+                crossDomain: true,
+                data: {
+                    action: 'query',
+                    list: 'search',
+                    srsearch: search,
+                    format: 'json'
+                },
+                success: function(data) {
+                    var searchResults = data.query && data.query.search ? data.query.search : [];
+                    searchResults.forEach(result => {
+                        addNewArticle(result.pageid, result.title, result.snippet);
+                    });
+                },
+                error: function(error) {
+                    console.error("Error fetching data:", error);
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            createSearchForm();
+            $('#searchForm').submit(function(e) {
+                e.preventDefault();
+                var searchQuery = $('input[name="search"]').val();
+                queryWikipedia(searchQuery);
+            });
+        });
+    </script>
+</body>
+</html>
