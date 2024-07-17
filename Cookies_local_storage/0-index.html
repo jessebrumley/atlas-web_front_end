@@ -14,6 +14,21 @@
         <h2>Cookies</h2>
         <button id="cookies" name="cookies" onclick="showCookies()">Show the cookies</button>
     </div>
-    <script src="./src/index.js"></script>
+    <script>
+
+        function setCookies() {
+            const email = document.getElementById("email").value;
+            const name = document.getElementById("firstname").value;
+            document.cookie = `firstname=${name}; path=/`;
+            document.cookie = `email=${email}; path=/`;
+          }
+          
+          function showCookies() {
+            const cookieSection = document.getElementById("cookie-section");
+            const cookieP = document.createElement("p");
+            cookieP.innerHTML = `Cookies: ${document.cookie}`;
+            cookieSection.appendChild(cookieP);
+          }
+    </script>
 </body>
 </html>
