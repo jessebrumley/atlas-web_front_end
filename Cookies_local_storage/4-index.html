@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3"></script>
+</head>
+<body>
+  <div id="welcomeMessage" style="display: none;">
+    <h1>Welcome to the website</h1>
+  </div>
+  <div id="loginForm" style="display: none;">
+    <h1>Login to the website</h1>
+    <input type="text" name="firstname" id="firstname" placeholder="Firstname">
+    <input type="email" name="email" id="email" placeholder="Email">
+    <button name="login" id="login" onclick="setCookiesAndShowWelcomeMessage()">Log me in</button>
+  </div>
+  <script>
+      function setCookiesAndShowWelcomeMessage() {
+          const email = document.getElementById("email").value;
+          const name = document.getElementById("firstname").value;
+          Cookies.set('firstname', name, { expires: 10 });
+          Cookies.set('email', email, { expires: 10 });
+          showWelcomeMessageOrForm();
+      }
+
+      function showWelcomeMessageOrForm() {
+          const firstname = Cookies.get('firstname');
+          if (firstname) {
+              const welcomeMessage = `<div id="welcomeMessage"><h1>Welcome ${firstname} <a href="#" id="logout" style="margin-left: 10px;" onclick="deleteCookiesAndShowForm()">(logout)</a></h1></div>`;
+              document.body.innerHTML = welcomeMessage + document.body.innerHTML;
+              document.getElementById("loginForm").style.display = "none";
+          } else {
+              showForm();
+          }
+      }
+
+      function deleteCookiesAndShowForm() {
+          Cookies.remove('firstname');
+          Cookies.remove('email');
+          document.getElementById("welcomeMessage").style.display = "none";
+          showForm();
+      }
+
+      function showForm() {
+          document.getElementById("welcomeMessage").style.display = "none";
+          document.getElementById("loginForm").style.display = "block";
+      }
+
+      showWelcomeMessageOrForm();
+  </script>
+</body>
+</html>
