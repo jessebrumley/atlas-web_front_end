@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Example</title>
+</head>
+<body>
+  <h1>Login to the website</h1>
+  <input type="text" name="firstname" id="firstname" placeholder="Firstname">
+  <input type="email" name="email" id="email" placeholder="Email">
+  <button name="login" id="login" onclick="setCookies()">Log me in</button>
+  <div id="cookie-section">
+      <h2>Cookies</h2>
+      <button id="cookies" name="cookies" onclick="showCookies()">Show the cookies</button>
+  </div>
+  <script>
+      function setCookies() {
+          const email = document.getElementById("email").value;
+          const name = document.getElementById("firstname").value;
+          const date = new Date();
+          date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000));// 10 days in ms
+          const expires = `expires=${date.toUTCString()}`;
+          
+          document.cookie = `firstname=${name}; ${expires}; path=/`;
+          document.cookie = `email=${email}; ${expires}; path=/`;
+      }
+
+      function showCookies() {
+        const cookieSection = document.getElementById("cookie-section");
+        const email = getCookie("email");
+        const firstname = getCookie("firstname");
+        const cookieP = document.createElement("p");
+        cookieP.innerHTML = `Email: ${email} - Firstname: ${firstname}`;
+        cookieSection.appendChild(cookieP);
+    }
+
+      function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return "";
+    }
+  </script>
+</body>
+</html>
